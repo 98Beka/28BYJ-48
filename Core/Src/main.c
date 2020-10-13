@@ -68,8 +68,7 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 	RCC->APB2ENR |= RCC_APB2ENR_IOPCEN;//разрешаем тактирование
-	GPIO_Init();
-
+	GPIO_28BYJ_48_Init();
 
 
   /* USER CODE END 1 */
@@ -93,6 +92,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
+uint8_t i = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -100,49 +100,13 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-/*
-	GPIOA->BSRR = GPIO_BSRR_BS1;
-	GPIOA->BRR = GPIO_BRR_BR2;
-	GPIOA->BRR = GPIO_BRR_BR3;
-	GPIOA->BRR = GPIO_BRR_BR4;
-	delay_ms(2);
+	  if(i==8)
+		  i = 0;
+	  Rotate(i);
+	  delay_us(1500);
+	  i++;
 
-	GPIOA->BSRR = GPIO_BSRR_BS1;
-	GPIOA->BSRR = GPIO_BSRR_BS2;
-	GPIOA->BRR = GPIO_BRR_BR3;
-	GPIOA->BRR = GPIO_BRR_BR4;
-	delay_ms(2);
 
-	GPIOA->BRR = GPIO_BRR_BR1;
-	GPIOA->BSRR = GPIO_BSRR_BS2;
-	GPIOA->BRR = GPIO_BRR_BR3;
-	GPIOA->BRR = GPIO_BRR_BR4;
-	delay_ms(2);
-	GPIOA->BRR = GPIO_BRR_BR1;
-	GPIOA->BSRR = GPIO_BSRR_BS2;
-	GPIOA->BSRR = GPIO_BSRR_BS3;
-	GPIOA->BRR = GPIO_BRR_BR4;
-	delay_ms(2);
-	GPIOA->BRR = GPIO_BRR_BR1;
-	GPIOA->BRR = GPIO_BRR_BR2;
-	GPIOA->BSRR = GPIO_BSRR_BS3;
-	GPIOA->BRR = GPIO_BRR_BR4;
-	delay_ms(2);
-	GPIOA->BRR = GPIO_BRR_BR1;
-	GPIOA->BRR = GPIO_BRR_BR2;
-	GPIOA->BSRR = GPIO_BSRR_BS3;
-	GPIOA->BSRR = GPIO_BSRR_BS4;
-	delay_ms(2);
-	GPIOA->BRR = GPIO_BRR_BR1;
-	GPIOA->BRR = GPIO_BRR_BR2;
-	GPIOA->BRR = GPIO_BRR_BR3;
-	GPIOA->BSRR = GPIO_BSRR_BS4;
-	delay_ms(2);
-	GPIOA->BSRR = GPIO_BSRR_BS1;
-	GPIOA->BRR = GPIO_BRR_BR2;
-	GPIOA->BRR = GPIO_BRR_BR3;
-	GPIOA->BSRR = GPIO_BSRR_BS4;
-	delay_ms(2);*/
 
     /* USER CODE BEGIN 3 */
   }

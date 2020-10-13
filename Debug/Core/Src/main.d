@@ -21,9 +21,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
- ../mylib/28BYJ-48/28BYJ-48.h \
+ C:/Users/tursu/OneDrive/myProjects/28BYJ-48/mylib/Inc/28BYJ-48.h \
  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h \
- C:/Users/tursu/OneDrive/myProjects/28BYJ-48/mylib/delay/delay.h
+ C:/Users/tursu/OneDrive/myProjects/28BYJ-48/mylib/Inc/delay.h
 
 ../Core/Inc/main.h:
 
@@ -71,8 +71,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 
-../mylib/28BYJ-48/28BYJ-48.h:
+C:/Users/tursu/OneDrive/myProjects/28BYJ-48/mylib/Inc/28BYJ-48.h:
 
 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:
 
-C:/Users/tursu/OneDrive/myProjects/28BYJ-48/mylib/delay/delay.h:
+C:/Users/tursu/OneDrive/myProjects/28BYJ-48/mylib/Inc/delay.h:

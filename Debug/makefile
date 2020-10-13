@@ -8,8 +8,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include mylib/delay/subdir.mk
--include mylib/28BYJ-48/subdir.mk
+-include mylib/Src/subdir.mk
 -include Drivers/STM32F1xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
@@ -40,6 +39,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 28BYJ-48.list \
 
+OBJCOPY_HEX += \
+28BYJ-48.hex \
+
 OBJCOPY_BIN += \
 28BYJ-48.bin \
 
@@ -63,6 +65,11 @@ default.size.stdout: $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+28BYJ-48.hex: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "28BYJ-48.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 28BYJ-48.bin: $(EXECUTABLES)
 	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "28BYJ-48.bin"
 	@echo 'Finished building: $@'
@@ -73,7 +80,7 @@ clean:
 	-$(RM) *
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 .PHONY: all clean dependents
 .SECONDARY:

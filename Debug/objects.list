@@ -18,5 +18,5 @@
 "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o"
 "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o"
 "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o"
-"mylib/28BYJ-48/28BYJ-48.o"
-"mylib/delay/delay.o"
+"mylib/Src/28BYJ-48.o"
+"mylib/Src/delay.o"

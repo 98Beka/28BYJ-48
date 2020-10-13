@@ -1,4 +1,5 @@
-mylib/delay/delay.o: ../mylib/delay/delay.c ../mylib/delay/delay.h \
+mylib/Src/delay.o: ../mylib/Src/delay.c \
+ C:/Users/tursu/OneDrive/myProjects/28BYJ-48/mylib/Inc/delay.h \
  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h \
  ../Drivers/CMSIS/Include/core_cm3.h \
  ../Drivers/CMSIS/Include/cmsis_version.h \
@@ -6,7 +7,7 @@ mylib/delay/delay.o: ../mylib/delay/delay.c ../mylib/delay/delay.h \
  ../Drivers/CMSIS/Include/cmsis_gcc.h \
  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 
-../mylib/delay/delay.h:
+C:/Users/tursu/OneDrive/myProjects/28BYJ-48/mylib/Inc/delay.h:
 
 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:
 
