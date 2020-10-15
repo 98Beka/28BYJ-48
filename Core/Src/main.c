@@ -19,12 +19,10 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "28BYJ-48.h"
-#include "delay.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+void TIM2_IRQHandler(void);
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,7 +54,28 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+uint8_t i = 0;
+uint8_t j = 0;
 
+void TIM2_IRQHandler(void)
+{
+	 if(i==8)
+		  i = 0;
+	  Rotate(i);
+	  i++;
+
+
+	  if(j==20)
+		  j = 0;
+
+	  if(j>=10)
+	 GPIOA->BSRR = GPIO_BSRR_BS0;
+	  else
+	  	GPIOA->BRR = GPIO_BRR_BR0;
+	  j++;
+
+TIM2->SR &= ~TIM_SR_UIF;
+}
 
 /* USER CODE END 0 */
 
@@ -67,8 +86,14 @@ static void MX_GPIO_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	RCC->APB2ENR |= RCC_APB2ENR_IOPCEN;//разрешаем тактирование
+	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;//разрешаем тактирование
+	GPIOA->CRL &=~GPIO_CRL_CNF0;//сбрасывем оба бита CNF- A1 в 0//push-pull
+	GPIOA->CRL |=GPIO_CRL_MODE0_1;//регистор на выход с частатой 2 MГц//устанавливаем, 1-й бит MODE1- A1, в 1
+
 	GPIO_28BYJ_48_Init();
+	Tim2_Init(8000,2);
+
+
 
 
   /* USER CODE END 1 */
@@ -92,7 +117,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-uint8_t i = 0;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -100,13 +125,6 @@ uint8_t i = 0;
   while (1)
   {
     /* USER CODE END WHILE */
-	  if(i==8)
-		  i = 0;
-	  Rotate(i);
-	  delay_us(1500);
-	  i++;
-
-
 
     /* USER CODE BEGIN 3 */
   }
@@ -141,7 +159,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV2;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 

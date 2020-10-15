@@ -29,10 +29,12 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f1xx_hal.h"
-//#include "28BYJ-48.c"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "28BYJ-48.h"
+#include "Tim2.h"
+#include "delay.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
